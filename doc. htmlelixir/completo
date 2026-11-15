@@ -1,0 +1,159 @@
+nada que ver con el título pero si lleva colores
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal con Reloj y Barra</title>
+    <style>
+        /* Estilos generales de la página */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        /* Contenedor del reloj en la esquina superior izquierda */
+        #reloj-contenedor {
+            position: absolute; 
+            top: 0px;          
+            left: 0px;         
+            background-color: #333; 
+            color: #000;        
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            font-size: 1.2rem;  
+            font-weight: bold;  
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            letter-spacing: 1px;
+            z-index: 10; 
+        }
+
+        /* Barra superior a la derecha del reloj */
+        .barra-superior {
+            position: absolute;
+            top: 15px;
+            left: 140px;       
+            right: 40px;       
+            height: 42px;       
+            background-color: #4A90E2; 
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: #000;        
+            font-weight: bold;  
+        }
+
+        /* Contenido de relleno para la página principal */
+        .contenido {
+            display: flex;
+            flex-direction: column; /* Cambiado a columna para acomodar el título y el cuadro */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            gap: 20px; /* Espacio entre el título y la cuadrícula */
+        }
+
+        /* NUEVO: Contenedor principal del cuadro de botones */
+        .cuadro-botones {
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco semi-transparente */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            
+            /* Configuramos la cuadrícula: 4 columnas a lo ancho */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 12px; /* Espacio entre los botones */
+        }
+
+        /* NUEVO: Estilo de cada botón individual cuadrado */
+        .boton-cuadrado {
+            width: 70px;  /* Ancho fijo */
+            height: 70px; /* Alto igual al ancho para que sea perfectamente cuadrado */
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 8px; /* Cambia a 0px si los quieres totalmente rectos */
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Efecto al pasar el mouse por encima de los botones */
+        .boton-cuadrado:hover {
+            background-color: #4A90E2; /* Cambia al azul de la barra al seleccionarlo */
+            transform: scale(1.05); /* Se agranda un poquito */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="reloj-contenedor">00:00:00</div>
+
+    <div class="barra-superior">
+        <span>Menú / Accesos directos aquí...</span>
+    </div>
+
+    <div class="contenido">
+        <h1>Bienvenido a mi Página Principal</h1>
+
+        <div class="cuadro-botones">
+            <button class="boton-cuadrado"></button>
+            <button class="boton-cuadrado">2</button>
+            <button class="boton-cuadrado">3</button>
+            <button class="boton-cuadrado">4</button>
+            
+            <button class="boton-cuadrado">5</button>
+            <button class="boton-cuadrado">6</button>
+            <button class="boton-cuadrado">7</button>
+            <button class="boton-cuadrado">8</button>
+            
+            <button class="boton-cuadrado">9</button>
+            <button class="boton-cuadrado">10</button>
+            <button class="boton-cuadrado">11</button>
+            <button class="boton-cuadrado">12</button>
+            
+            <button class="boton-cuadrado">13</button>
+            <button class="boton-cuadrado">14</button>
+            <button class="boton-cuadrado">15</button>
+            <button class="boton-cuadrado">16</button>
+            
+            <button class="boton-cuadrado">17</button>
+            <button class="boton-cuadrado">18</button>
+            <button class="boton-cuadrado">19</button>
+            <button class="boton-cuadrado">20</button>
+        </div>
+    </div>
+
+    <script>
+        function actualizarReloj() {
+            const ahora = new Date();
+            
+            let horas = ahora.getHours();
+            let minutos = ahora.getMinutes();
+            let segundos = ahora.getSeconds();
+
+            horas = horas < 10 ? '0' + horas : horas;
+            minutos = minutos < 10 ? '0' + minutos : minutos;
+            segundos = segundos < 10 ? '0' + segundos : segundos;
+
+            const tiempoTexto = `${horas}:${minutos}:${segundos}`;
+            document.getElementById('reloj-contenedor').textContent = tiempoTexto;
+        }
+
+        actualizarReloj();
+        setInterval(actualizarReloj, 1000);
+    </script>
+
+</body>
+</html>
